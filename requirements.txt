@@ -1,3 +1,7 @@
 chromadb
 pandas
 sentence-transformers
+fastapi
+uvicorn
+streamlit
+ollama

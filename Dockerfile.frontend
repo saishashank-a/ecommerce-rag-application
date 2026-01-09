@@ -1,0 +1,18 @@
+# Use Python 3.9 Slim
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies (same requirements.txt)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy Frontend Code
+COPY frontend ./frontend
+
+# Expose Streamlit Port
+EXPOSE 8501
+
+# Run Streamlit
+CMD ["streamlit", "run", "frontend/app.py", "--server.port=8501", "--server.address=0.0.0.0"]

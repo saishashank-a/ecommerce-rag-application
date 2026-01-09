@@ -24,26 +24,38 @@ It builds a searchable Vector Database from raw CSV data using:
 
 ## Usage
 
-### 1. Ingest Data
+### 1. Start Support Services
 
-Reads the CSV, converts text to vectors, and saves them locally in `./chroma_db`.
-
-1. Open `ingest.py` and verify `CSV_PATH` points to your `Reviews.csv`.
-2. Run the script:
-
-    ```bash
-    python3 ingest.py
-    ```
-
-### 2. Search Products
-
-Search the database using natural language (e.g., "dog food" or "yummy candy").
+Ensure **Ollama** is running and you have the model:
 
 ```bash
-python3 query.py
+ollama serve
+# In another terminal if needed:
+ollama pull llama3.1:latest
 ```
 
-Type `exit` to quit the search loop.
+### 2. Start Backend API
+
+Open a terminal:
+
+```bash
+uvicorn backend.app.main:app --port 8000
+```
+
+### 3. Start Frontend UI
+
+Open a **new** terminal:
+
+```bash
+streamlit run frontend/app.py
+```
+
+### 4. Interact
+
+Open your browser (usually `http://localhost:8501`).
+
+* **Search**: Find products.
+* **Chat**: Ask questions about your products.
 
 ## Project Structure
 
