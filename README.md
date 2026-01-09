@@ -13,7 +13,23 @@ It builds a searchable Vector Database from raw CSV data using:
 * Python 3.10+
 * Amazon Reviews CSV file (e.g., `Reviews.csv`)
 
-## Installation
+## Quick Start (Kubernetes)
+
+Run the full production stack (Backend + Frontend + DB + Redis + MessageQueue):
+
+```bash
+# 1. Build images
+docker build -t ecommerce-backend:v1 -f Dockerfile.backend .
+docker build -t ecommerce-frontend:v1 -f Dockerfile.frontend .
+
+# 2. Deploy
+kubectl apply -f k8s/
+
+# 3. Access
+# Open http://localhost:8501
+```
+
+## Manual Setup (Local Development)
 
 1. Clone this repository.
 2. Install dependencies:
